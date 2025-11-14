@@ -6,23 +6,23 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function BasicExample() {
   return (
     <>
-<Navbar expand="lg" className="bg-body-tertiary navigation-bar">
-      <Container>
-        <Navbar.Brand href="#home">Erik Shaver</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Resources" id="basic-nav-dropdown">
-              <NavDropdown.Item href="https://github.com/ki-krpto">
-                Github
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+      <Navbar expand="lg" className="bg-body-tertiary navigation-bar">
+        <Container>
+          <Navbar.Brand href="#home">Erik Shaver</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+              <NavDropdown title="Resources" id="basic-nav-dropdown">
+                <NavDropdown.Item href="https://github.com/ki-krpto">
+                  Github
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }
