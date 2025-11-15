@@ -32,29 +32,115 @@
 }
 
 .navigation-bar {
+  background-color: #18181d;
   position: fixed;
   top: 0 !important;
   left: 0 !important;
   padding: 0.5rem 0;
   z-index: 1000;
+  color: #dcd6ff !important;
+}
+
+.nav-link {
+  color: #dcd6ff !important;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
   padding: 0;
+  color: #dcd6ff !important;
 }
 
 .logo {
   height: 40px;
   width: auto;
+  padding-left: -1rem;
+  margin-left: -1rem;
 }
 
 .navbar {
   padding: 0 1rem;
+  background-color: #18181d !important;
+  color: #dcd6ff !important;
 }
 
 main {
   margin-top: 60px;
   padding: 1rem;
 }
+
+.Hero-Logo {
+  width: 25vw;
+  height: auto;
+  transform: translate(-135%, 50%);
+}
+
+.circular-image {
+  width: 22vw;
+  height: 22vw;
+  border-radius: 50%;
+  border: 3px solid #9d4dff;
+  box-shadow: 0 0 15px #ae00ff, 0 0 30px #b36bff;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.circular-image:hover {
+  box-shadow: 0 0 30px #ae00ff, 0 0 60px #b36bff;
+  transform: translate(-135%, 50%) scale(1.05);
+}
+
+.hero-text {
+  color: #dcd6ff !important;
+  transform: translate(0%, 0%);
+}
+
+.hero-header {
+  font-size: 5rem;
+  transform: translate(10%, -150%);
+}
+
+.hero-subheader {
+  font-size: 1.5rem;
+  transform: translate(1%, -350%);
+}
+
+.footer {
+  color: #dcd6ff !important;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.contact-button {
+  background-color: #9d4dff;
+  border-color: #9d4dff;
+  color: #dcd6ff !important;
+  margin-right: 12rem;
+  transform: translate(0%, -300%);
+}
+
+.contact-button:hover {
+  transform: translate(0%, -300%);
+  background-color: rgba(0, 190, 255, 0.8) !important;
+  border-color: rgba(0, 180, 255, 0.8) !important;
+  box-shadow: 0 0 15px #00baff, 0 0 30px #29f7ff;
+}
+
+.projects-button {
+  background-color: #9d4dff;
+  border-color: #9d4dff;
+  color: #dcd6ff !important;
+  transform: translate(0%, -300%);
+}
+
+.projects-button:hover {
+  transform: translate(0%, -300%);
+  background-color: rgba(0, 190, 255, 0.8) !important;
+  border-color: rgba(0, 180, 255, 0.8) !important;
+  box-shadow: 0 0 15px #00baff, 0 0 30px #29f7ff;
+}
+
