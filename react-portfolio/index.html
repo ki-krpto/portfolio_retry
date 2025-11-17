@@ -6,8 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Erik Shaver</title>
   </head>
+
   <body>
+    <!-- Your React root -->
     <div id="root"></div>
+
+    <!-- Glitch RGB filter (MUST be inside body) -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false">
+      <filter id="glitch-rgb">
+        <!-- Red channel shifted right -->
+        <feColorMatrix type="matrix"
+          values="1 0 0 0 0
+                  0 0 0 0 0
+                  0 1 0 0 0
+                  0 0 0 1 0" />
+        <feOffset dx="2" dy="0" result="r" />
+
+        <!-- Blue channel shifted left -->
+        <feColorMatrix type="matrix"
+          values="0 1 0 0 0
+                  0 0 0 0 0
+                  0 0 1 0 0
+                  0 0 0 1 0" />
+        <feOffset dx="-2" dy="0" result="b" />
+
+        <!-- Combine red + blue splits -->
+        <feBlend in="r" in2="b" mode="screen" />
+      </filter>
+    </svg>
+
+    <!-- Your main script -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,67 +1,57 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg-color: #ffffff;
+  --text-color: #080808;
+  --nav-bg: #eaeaea;
+  --nav-text: #080808;
+  --accent: #9d4dff;
+  --accent-text: #ffffff;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html.dark {
+  --bg-color: #080808;
+  --text-color: #dcd6ff;
+  --nav-bg: #18181d;
+  --nav-text: #dcd6ff;
+  --accent: #9d4dff;
+  --accent-text: #dcd6ff;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #121216 /* Main Color of Site */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body {
+  view-transition-name: body;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+::view-transition-old(body),
+::view-transition-new(body) {
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+::view-transition-old(body) {
+  animation-name: glitch-exit;
+}
+
+::view-transition-new(body) {
+  animation-name: glitch-enter;
+}
+
+@keyframes glitch-exit {
+  0% { opacity: 1; transform: translate(0,0); filter: none; }
+  20% { transform: translate(-2px,0); filter: url('#glitch-rgb'); }
+  40% { transform: translate(2px,-2px); }
+  60% { transform: translate(-1px,1px); }
+  100% { opacity: 0; transform: translate(3px,-3px); filter: blur(3px); }
+}
+
+@keyframes glitch-enter {
+  0% { opacity: 0; transform: translate(3px,-3px); filter: blur(3px); }
+  100% { opacity: 1; transform: translate(0,0); filter: none; }
 }

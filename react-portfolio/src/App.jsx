@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, Route, Routes } from 'react-router-dom';
 import Logo from './assets/Logo.webp';
+import ThemeToggle from "./ThemeToggle";
 
 
 function Blog() {
@@ -58,6 +59,7 @@ function App() {
               <Nav.Link as={Link} to="/contact" className="nav-link">Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          <ThemeToggle />
         </div>
       </Navbar>
       <Routes>
