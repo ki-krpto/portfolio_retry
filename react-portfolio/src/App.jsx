@@ -24,10 +24,52 @@ function Home() {
       <div className="hero-text">
         <h1 className="hero-header">Hi, I'm Erik Shaver</h1>
         <p className="hero-subheader">Web Developer & Aspiring Pentester</p>
-        <button className="btn btn-primary contact-button">Contact</button>
+        <button className="btn btn-primary contact-button" onClick={() => {
+            document.getElementById("contact").scrollIntoView({ 
+              behavior: "smooth",
+              block: "start"
+            });
+          }}>
+          Contact
+        </button>
         <button className="btn btn-primary projects-button">Projects</button>
       </div>
     </div>
+    <div className="projects-section">
+      <h1 className="section-title">Projects</h1>
+      <div className="projects-grid">
+        <div className="project-card">
+          <img src="src/assets/showcase1.png" alt="Project" className="project-image" />
+          <h3 className="project-title">Exifuscator</h3>
+          <p className="project-desc">
+            Short description. What it does + why it matters.
+          </p>
+          <div className="project-links">
+            <a href="https://github.com/fhs-codingclub/Exifuscator" className="glow-btn">See the Project!</a>
+          </div>
+        </div>
+        <div className="project-card">
+          <img src="src/assets/showcase2.png" alt="Project" className="project-image" />
+          <h3 className="project-title">Fallbrook HS Coding Club Website</h3>
+          <p className="project-desc">
+            Short description. What it does + why it matters.
+          </p>
+          <div className="project-links">
+            <a href="https://fallbrookhs.tech" className="glow-btn">See the Project!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="contact-section" id="contact">
+  <pre className="contact-terminal">
+    {`> contact initialized...
+> channels available:
+             - email:    shaver.eriks@gmail.com
+          - github:   github.com/ki-krpto
+    `}
+    <span className="cursor">█</span>
+  </pre>
+</div>
     </>
   )
 }
