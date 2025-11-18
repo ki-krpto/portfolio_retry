@@ -42,7 +42,8 @@ function Home() {
           <img src="src/assets/showcase1.png" alt="Project" className="project-image" />
           <h3 className="project-title">Exifuscator</h3>
           <p className="project-desc">
-            Short description. What it does + why it matters.
+            Exifuscator is a tool that allows users to remove, and edit metadata from image files.
+            It is written in python with PIL, and piexif. You can find it on my Github here!
           </p>
           <div className="project-links">
             <a href="https://github.com/fhs-codingclub/Exifuscator" className="glow-btn">See the Project!</a>
@@ -52,7 +53,7 @@ function Home() {
           <img src="src/assets/showcase2.png" alt="Project" className="project-image" />
           <h3 className="project-title">Fallbrook HS Coding Club Website</h3>
           <p className="project-desc">
-            Short description. What it does + why it matters.
+            The website for the Fallbrook High School Coding Club. It is a static website that is hosted on GitHub Pages.
           </p>
           <div className="project-links">
             <a href="https://fallbrookhs.tech" className="glow-btn">See the Project!</a>
