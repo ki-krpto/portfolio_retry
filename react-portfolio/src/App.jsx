@@ -39,7 +39,7 @@ function Home() {
       <h1 className="section-title">Projects</h1>
       <div className="projects-grid">
         <div className="project-card">
-          <img src="src/assets/showcase1.png" alt="Project" className="project-image" />
+          <img src="/showcase1.png" alt="Project" className="project-image" />
           <h3 className="project-title">Exifuscator</h3>
           <p className="project-desc">
             Exifuscator is a tool that allows users to remove, and edit metadata from image files.
@@ -50,7 +50,7 @@ function Home() {
           </div>
         </div>
         <div className="project-card">
-          <img src="src/assets/showcase2.png" alt="Project" className="project-image" />
+          <img src="/showcase2.png" alt="Project" className="project-image" />
           <h3 className="project-title">Fallbrook HS Coding Club Website</h3>
           <p className="project-desc">
             The website for the Fallbrook High School Coding Club. It is a static website that is hosted on GitHub Pages.
