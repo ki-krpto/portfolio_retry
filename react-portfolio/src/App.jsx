@@ -5,14 +5,14 @@ import { Link, Route, Routes } from 'react-router-dom';
 import Logo from './assets/Logo.webp';
 import ThemeToggle from "./ThemeToggle";
 import { useState, useEffect } from "react";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc, query, orderBy, serverTimestamp } from "firebase/firestore";
 import { db } from "./firebase-config.js";
 import {useNavigate} from "react-router-dom";
 
 function New_note() {
   const [title, setTitle] = useState("")
   const [postText, setPostText] = useState("")
-
+  const [author, setAuthor] = useState("")
 
   const postCollectionRef = collection(db, "posts")
   let navigate = useNavigate();
@@ -20,6 +20,8 @@ function New_note() {
     await addDoc(postCollectionRef, {
       title, 
       postText,
+      author,
+      createdAt: serverTimestamp()
     });
     navigate("/notes")
   };
@@ -38,11 +40,19 @@ function New_note() {
             />   
           </div>
           <div className="input-gp"> 
-            <label> Post:</label>
+            <label className="Post"> Post:</label>
             <textarea placeholder="Post" 
             onChange={(event) => {
               setPostText(event.target.value)
             }}
+            />
+          </div>
+          <div>
+            <label> Author:</label>
+            <input placeholder="Your Name" 
+            onChange={(event) => {
+              setAuthor(event.target.value)
+              }}
             />
           </div> 
           <button onClick={CreatePost}>Submit Post</button>
@@ -54,31 +64,72 @@ function New_note() {
 
 function Notes() {
   const [postLists, setPostList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const postCollectionRef = collection(db, "posts");
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = await getDocs(postCollectionRef);
-      setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      try {
+        setLoading(true);
+        const q = query(postCollectionRef, orderBy("createdAt", "desc"));
+        const data = await getDocs(q);
+        const posts = data.docs.map((doc) => ({ 
+          ...doc.data(), 
+          id: doc.id,
+          createdAt: doc.data().createdAt?.toDate() || new Date()
+        }));
+        setPostList(posts);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+        setError("Error loading posts. Trying fallback method...");
+        
+        // Fallback to unordered fetch if there's an error
+        try {
+          const data = await getDocs(postCollectionRef);
+          const posts = data.docs.map((doc) => ({ 
+            ...doc.data(), 
+            id: doc.id,
+            createdAt: doc.data().createdAt?.toDate() || new Date()
+          }));
+          // Sort by createdAt on the client side
+          posts.sort((a, b) => b.createdAt - a.createdAt);
+          setPostList(posts);
+          setError(null);
+        } catch (fallbackError) {
+          console.error("Fallback fetch failed:", fallbackError);
+          setError("Failed to load posts. Please refresh the page or try again later.");
+        }
+      } finally {
+        setLoading(false);
+      }
     };
 
     getPosts();
-  }, []); 
+  }, []);
 
   return (
-    <>
-      <div className="mt-5 pt-5">
-        <div className="homePage">
-          {postLists.map((post) => {
-            return (
-              <div className="post" key={post.id}>
-                {post.title}
+    <div className="postsContainer mt-5">
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p style={{ color: 'red' }}>{error}</p>
+      ) : (
+        postLists.map((post) => (
+          <div className="post" key={post.id}>
+            <div className="postHeader">
+              <div className="title">
+                <h1>{post.title}</h1>
+                <p className="author">By: {post.author}</p>
               </div>
-            );
-          })}
-        </div>
-      </div>
-    </>
+            </div>
+            <div className="postTextContainer">
+              {post.postText}
+            </div>
+          </div>
+        ))
+      )}
+    </div>
   );
 }
 

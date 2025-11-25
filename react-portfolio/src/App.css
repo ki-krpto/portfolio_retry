@@ -118,7 +118,7 @@ main {
 
 .footer {
   color: var(--text-color);
-  margin-top: 300px;
+  margin-top: 50px;
   position: relative;
   bottom: 0;
   left: 0;
@@ -263,42 +263,160 @@ main {
 
 .CreatePostPage {
   width: 100%;
-  height: auto;
-  display: grid;
-  place-items: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .cpContainer {
-  width: 300px;
-  height: auto;
-  padding: 20px;
-  background-color: --bg-color;
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  background-color: black;
   border-radius: 12px;
-  color: --accent;
-  display: flex;
-  flex-direction: column;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cpContainer h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .cpContainer label {
-  font-size: 25px;
+  font-size: 18px;
+  margin-bottom: 8px;
+  display: block;
 }
 
-.cpContainer .inputGp {
-  margin-top: 30px;
+.input-gp {
+  margin-bottom: 20px;
+}
+
+.input-gp input,
+.input-gp textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.input-gp input {
+  height: 45px;
+}
+
+.input-gp textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.cpContainer button {
+  width: 100%;
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.cpContainer button:hover {
+  background-color: #0056b3;
+}
+
+/* Posts container */
+.postsContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  min-height: calc(100vh - 200px);
 }
 
-.inputGp input,
-.inputGp textarea {
-  font-size: 18px;
-  border: none;
-  border-radius: 2px;
-  padding: 5px;
+.post {
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 7px var(--accent), 0 0 15px #b36bff;
+  margin: 15px 0;
+  padding: 25px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 7px var(--accent), 0 0 15px #b36bff;
+}
+
+.post .postHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.postHeader .title {
+  flex: 1;
+  text-align: left;
+  margin: 0;
+}
+
+.postHeader .title h1 {
+  margin: 0;
+  font-size: 22px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.post .postTextContainer {
+  word-wrap: break-word;
+  max-height: 400px;
+  width: 100%;
+  overflow-y: auto;
+  line-height: 1.7;
+  padding: 10px 0;
+  color: var(--text-color);
+  font-size: 15px;
+}
+
+/* Custom scrollbar */
+.postTextContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.postTextContainer::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.postTextContainer::-webkit-scrollbar-thumb {
+  background: #b36bff;
+  border-radius: 3px;
+}
+
+.postTextContainer::-webkit-scrollbar-thumb:hover {
+  background: #9a4dff;
+}
+
+.author {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 5px;
+  color: var(--text-color);
 }
 
 @keyframes blink {
@@ -394,5 +512,7 @@ main {
     transform: translate(0%, 0%);
   }
 }
+
+
 
 
