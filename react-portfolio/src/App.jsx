@@ -4,14 +4,82 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, Route, Routes } from 'react-router-dom';
 import Logo from './assets/Logo.webp';
 import ThemeToggle from "./ThemeToggle";
+import { useState, useEffect } from "react";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { db } from "./firebase-config.js";
+import {useNavigate} from "react-router-dom";
+
+function New_note() {
+  const [title, setTitle] = useState("")
+  const [postText, setPostText] = useState("")
 
 
-function Blog() {
+  const postCollectionRef = collection(db, "posts")
+  let navigate = useNavigate();
+  const CreatePost = async () => {
+    await addDoc(postCollectionRef, {
+      title, 
+      postText,
+    });
+    navigate("/notes")
+  };
+
   return (
     <>
-      <h1>Blog</h1>
+      <div className="CreatePostPage">a
+        <div className="cpContainer mt-5 pt-5">
+          <h1>Create a note</h1>
+          <div className="input-gp">
+            <label> Title:</label>
+            <input placeholder="Title" 
+            onChange={(event) => {
+              setTitle(event.target.value)
+              }}
+            />   
+          </div>
+          <div className="input-gp"> 
+            <label> Post:</label>
+            <textarea placeholder="Post" 
+            onChange={(event) => {
+              setPostText(event.target.value)
+            }}
+            />
+          </div> 
+          <button onClick={CreatePost}>Submit Post</button>
+        </div>
+      </div>
     </>
   )
+}
+
+function Notes() {
+  const [postLists, setPostList] = useState([]);
+  const postCollectionRef = collection(db, "posts");
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const data = await getDocs(postCollectionRef);
+      setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getPosts();
+  }, []); 
+
+  return (
+    <>
+      <div className="mt-5 pt-5">
+        <div className="homePage">
+          {postLists.map((post) => {
+            return (
+              <div className="post" key={post.id}>
+                {post.title}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
 }
 
 function Home() {
@@ -50,8 +118,13 @@ function Home() {
           </div>
         </div>
         <div className="project-card">
+<<<<<<< HEAD
           <img src="/showcase2.png" alt="Project" className="project-image" />
           <h3 className="project-title">Fallbrook HS Coding Club Website</h3>
+=======
+          <img src="src/assets/showcase2.png" alt="Project" className="project-image" />
+          <h3 className="project-title">FHS Coding Club Website</h3>
+>>>>>>> 0276f17 (Mini blog! currently only renders titles :/)
           <p className="project-desc">
             The website for the Fallbrook High School Coding Club. It is a static website that is hosted on GitHub Pages.
           </p>
@@ -92,22 +165,24 @@ function App() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
-              <Nav.Link as={Link} to="/projects" className="nav-link">Projects</Nav.Link>
-              <Nav.Link as={Link} to="/blog" className="nav-link">Blog</Nav.Link>
+              <Nav.Link as={Link} to="/About" className="nav-link">About</Nav.Link>
+              <Nav.Link as={Link} to="/notes" className="nav-link">Notes</Nav.Link>
+              <Nav.Link as={Link} to="/New_note" className="nav-link">New Note</Nav.Link>
+              <Nav.Link as={Link} to="/Projects" className="nav-link">Projects (Full)</Nav.Link>
               <NavDropdown title="Resources" id="basic-nav-dropdown">
                 <NavDropdown.Item href="https://github.com/ki-krpto">
                   Github
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={Link} to="/contact" className="nav-link">Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <ThemeToggle />
         </div>
       </Navbar>
       <Routes>
-        <Route path="/blog" element={<Blog/>} />
+        <Route path="/New_note" element={<New_note/>} />
         <Route path="/" element={<Home/>} />
+        <Route path="/notes" element={<Notes />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <footer className="footer">

@@ -3,7 +3,7 @@
   --text-color: #080808;
   --nav-bg: #eaeaea;
   --nav-text: #080808;
-  --accent: #9d4dff;
+  --accent: #00A6D7;
   --accent-text: #ffffff;
 }
 
@@ -12,7 +12,7 @@ html.dark {
   --text-color: #dcd6ff;
   --nav-bg: #18181d;
   --nav-text: #dcd6ff;
-  --accent: #9d4dff;
+  --accent: #0058B3;
   --accent-text: #dcd6ff;
 }
 
