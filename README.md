@@ -22,9 +22,9 @@ This is an ongoing project, I plan to keep improving it throughout my life, but 
 ## How to run the project locally
   1. Clone the repo
   2. Install dependencies with:
-    ```
-    npm install
-    ```
+  ```
+  npm install
+  ```
   3. Setup Firebase
   4. Start the development server:
   ```
