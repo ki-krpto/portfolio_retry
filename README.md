@@ -1,2 +1,3 @@
-# portfolio_retry
-trying to make a portfolio with vite + react
+<h1> Erik Shaver - Portfolio Website</h1>
+<br>
+<h2>Overview</h2>
