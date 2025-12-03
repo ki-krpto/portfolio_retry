@@ -57,7 +57,7 @@ To run the project with your own Firebase Setup:
     
      const app = initializeApp(firebaseConfig);
      export const db = getFirestore(app);
-    ```
+     ```
   5. Then save the file and run the project normally
 
 ## Roadmap
