@@ -133,6 +133,19 @@ function Notes() {
   );
 }
 
+function About() {
+  return (
+    <>
+      <div className="container">
+        <div className="about-text">
+          <h1 className="about-header">About</h1>
+          <p className="about-subheader">I'm a web developer and aspiring pentester.</p>
+        </div>
+      </div>
+    </>
+  );
+}
+
 function Home() {
   return (
     <>
@@ -165,7 +178,6 @@ function Home() {
         <h1 className="section-title">Projects</h1>
 
         <div className="projects-grid">
-          {/* Project 1 */}
           <div className="project-card">
             <img src="/showcase1.png" alt="Project" className="project-image" />
             <h3 className="project-title">Exifuscator</h3>
@@ -180,7 +192,6 @@ function Home() {
             </div>
           </div>
 
-          {/* Project 2 */}
           <div className="project-card">
             <img src="/showcase2.png" alt="Project" className="project-image" />
             <h3 className="project-title">Fallbrook HS Coding Club Website</h3>
@@ -246,6 +257,7 @@ function App() {
         <Route path="/New_note" element={<New_note/>} />
         <Route path="/" element={<Home/>} />
         <Route path="/notes" element={<Notes />} />
+        <Route path="/About" element={<About />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <footer className="footer">
