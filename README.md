@@ -3,6 +3,7 @@
 This is my personal portfolio site built with react + vite
 I implemented a blog posting system which uses Firebase Firestore. When posts are created they are stored in the database. My project then pulls from the database to show the posts on the notes page.
 This is an ongoing project, I plan to keep improving it throughout my life, but this is the first iteration of my project, enjoy!
+Url of my video: https://youtu.be/L1ZZTL8XF5s
 
 ## Features
 - React based single-page, application
