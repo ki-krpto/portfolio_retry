@@ -155,7 +155,7 @@ main {
 }
 
 .projects-section {
-  padding: 10rem 0;
+  padding: 4rem 0;
   background: var(--bg-color);
 }
 
@@ -233,22 +233,26 @@ main {
 }
 
 .contact-section {
-  padding: 80px 20px;
+  padding: 2rem 0;
   display: flex;
   justify-content: center;
 }
 
 .contact-terminal {
   background: #18181d;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 25px 30px;
+  padding-left: 5px;
+  border-radius: 12px;
   color: #dcd6ff;
   font-family: "Fira Code", "Courier New", monospace;
-  font-size: 1.7vh;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
   white-space: pre-wrap;
-  box-shadow: 0 0 15px rgba(0, 27, 135, 0.25);
-  max-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 27, 135, 0.25);
+  border: 1px solid rgba(0, 80, 255, 0.2);
+  width: 100%;
+  max-width: 750px;
+  transform: translate(15rem, -2rem)
 }
 
 .contact-terminal::first-line {
@@ -256,9 +260,8 @@ main {
 }
 
 .cursor {
-  width: 10px;
-  margin-left: -25vh;
   animation: blink 1s steps(2, start) infinite;
+  color: #4AF262
 }
 
 .CreatePostPage {
@@ -333,7 +336,6 @@ main {
   background-color: #0056b3;
 }
 
-/* Posts container */
 .postsContainer {
   display: flex;
   flex-direction: column;
@@ -418,6 +420,40 @@ main {
   margin-top: 5px;
   color: var(--text-color);
 }
+
+.cert-section {
+  padding: 5rem 0;
+  background: var(--bg-color);
+}
+
+.cert-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28rem;
+  margin: 0 auto;
+  background: var(--bg-color);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  color: var(--text-color);
+  box-shadow: 0 0 4px var(--accent), 0 0 7px #b36bff;
+  transition: 0.25s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 7px var(--accent), 0 0 15px #b36bff;
+}
+
+.cert-image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 4px var(--accent), 0 0 7px #b36bff;
+}
+
 
 @keyframes blink {
   to {

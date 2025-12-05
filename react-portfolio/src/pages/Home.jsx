@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import Logo from '../assets/Logo.webp';
+import Cert from '../assets/Cert.png';
 
 export default function Home() {
   return (
@@ -62,16 +63,33 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+        <div className="cert-section">
+            <div className="container">
+                <h1 className="section-title">Certifications</h1>
+                <div className="cert-card">
+                    <a href="https://certificates.cs50.io/71863d88-d0d4-4710-8038-9921967a7985.pdf?size=letter" target="_blank" rel="noopener noreferrer">
+                    <img 
+                    src={Cert}
+                    alt="CS50 Certificate"
+                    className="cert-image"
+                    ></img>
+                    </a>
+                </div>
+            </div>
+        </div>
       <div className="contact-section" id="contact">
-        <pre className="contact-terminal">
-          {`> contact initialized...
-> channels available:
-             - email:    shaver.eriks@gmail.com
-             - github:   github.com/ki-krpto
-`}
-          <span className="cursor">█</span>
-        </pre>
+        <Container>
+            <div className="terminal-wrapper">
+                <pre className="contact-terminal">
+                {`> contact initialized...
+        > channels available:
+                       - email:    shaver.eriks@gmail.com
+                    - github:   github.com/ki-krpto
+        `}
+                <span className="cursor">█</span>
+                </pre>
+            </div>
+        </Container>
       </div>
     </>
   );
